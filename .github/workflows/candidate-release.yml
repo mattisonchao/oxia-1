@@ -136,7 +136,7 @@ jobs:
   regret:
     name: Regret Tests
     needs: [prepare, build-image]
-    uses: oxia-db/regret-adapters/.github/workflows/regret-test.yml@main
+    uses: oxia-db/regret-adapters/.github/workflows/regret-test.yml@fix/regret-basic-kv-workflow
     with:
       candidate_image: "oxia/oxia:${{ needs.prepare.outputs.rc_tag }}"
       stable_image: "oxia/oxia:${{ needs.prepare.outputs.stable_tag }}"
