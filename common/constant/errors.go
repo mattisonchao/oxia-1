@@ -72,6 +72,7 @@ var (
 	ErrInvalidStatus           = errors.New("oxia: invalid status")
 	ErrNotificationsNotEnabled = errors.New("oxia: notifications not enabled on namespace")
 	ErrNodeIsNotMember         = errors.New("oxia: node is not a member")
+	ErrNodeIsNotFollower       = errors.New("oxia: node is not follower")
 	ErrNodeIsNotLeader         = errors.New("oxia: node is not leader")
 	ErrNotInitialized          = errors.New("oxia: server not initialized yet")
 	ErrResourceConflict        = errors.New("oxia: resource conflict")
