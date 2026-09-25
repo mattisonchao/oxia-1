@@ -23,15 +23,16 @@ import (
 
 var validNamespacePattern = regexp.MustCompile(`^[a-zA-Z0-9][a-zA-Z0-9_.\-]*$`)
 
-// A data server keeps its manifest in this file, in the same directory as the
-// directories of the namespaces. File systems can be case-insensitive, so no
-// namespace can take this name in any letter case.
-const dataServerManifestFile = "MANIFEST"
-
-// A data server keeps the database snapshots in this directory, in the same
-// directory as the directories of the namespaces. File systems can be
+// KeywordNamespaceManifest is the file a data server keeps its manifest in, in
+// the same directory as the directories of the namespaces. File systems can be
 // case-insensitive, so no namespace can take this name in any letter case.
-const dataServerSnapshotsDir = "snapshots"
+const KeywordNamespaceManifest = "MANIFEST"
+
+// KeywordNamespaceSnapshots is the directory a data server keeps the database
+// snapshots in, in the same directory as the directories of the namespaces.
+// File systems can be case-insensitive, so no namespace can take this name in
+// any letter case.
+const KeywordNamespaceSnapshots = "snapshots"
 
 func ValidateNamespace(namespace string) error {
 	if namespace == "" {
@@ -46,10 +47,10 @@ func ValidateNamespace(namespace string) error {
 	if !validNamespacePattern.MatchString(namespace) {
 		return errors.Errorf("namespace %q contains invalid characters", namespace)
 	}
-	if strings.EqualFold(namespace, dataServerManifestFile) {
+	if strings.EqualFold(namespace, KeywordNamespaceManifest) {
 		return errors.Errorf("namespace %q is reserved: it collides with the data server manifest file", namespace)
 	}
-	if strings.EqualFold(namespace, dataServerSnapshotsDir) {
+	if strings.EqualFold(namespace, KeywordNamespaceSnapshots) {
 		return errors.Errorf("namespace %q is reserved: it collides with the data server snapshots directory", namespace)
 	}
 	return nil
